@@ -76,6 +76,13 @@ class Database {
                 port: this.POSTGRES_PORT,
                 dialect: "postgres",
                 models: [artistModel_1.ArtistModel],
+                logging: false,
+                dialectOptions: {
+                    ssl: {
+                        require: true,
+                        rejectUnauthorized: false, // Ajusta según tu configuración
+                    },
+                },
             });
             try {
                 yield this.waitForConnection({ retries: 30, delay: 5000 });
